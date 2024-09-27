@@ -29,15 +29,21 @@ app.get('/selecoes/:id', (req, res) => {
   // const index = req.params.id
   res.status(200).json(buscarSelecaoId(req.params.id))
 })
-app.delete('/selecoes/:id', (req, res) => {
-  const index = buscarIndexSelecao(req.params.id)
-  console.log('Index', index)
-  selecoes.splice(index, 1)
-  res.status(200).json(selecoes)
-})
 app.post('/selecoes', (req, res) => {
     selecoes.push(req.body)
     res.status(201).send('Seleção cadastrada com sucesso!')
+})
+app.delete('/selecoes/:id', (req, res) => {
+  const index = buscarIndexSelecao(req.params.id)
+  selecoes.splice(index, 1)
+  res.status(200).send(`Seleção com id ${res.params.id} foi removida com sucesso!`)
+})
+app.put('/selecoes/:id', (req, res) => {
+  const index = buscarIndexSelecao(req.params.id)
+  console.log('selecao', req.body)
+  selecoes[index].selecao = req.body.selecao
+  selecoes[index].grupo = req.body.grupo
+  res.status(200).json(selecoes)
 })
 
 export default app
