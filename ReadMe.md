@@ -30,3 +30,12 @@ npm install express --save
 npm install nodemom -D
 
 ```
+
+### Instalando o MySQL
+
+Instale o Workbench [https://dev.mysql.com/downloads/workbench/] junto com o MySQL, após a instalação, instale a lib de mysql no projeto.
+
+```bash
+npm install mysql
+
+```
